@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highstock Example</title>
+		<style type="text/css"></style>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col col-sm col-md" align='center'>
+					<h1>RYABIN CHARTS</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col col-sm sol-md">
+					<div id="chrt" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+		_dates = {{dates|safe}}
+		_prices = {{prices|safe}}
+		_prediction = {{prediction|safe}}
+
+		$(function () {
+			$('#chrt').highcharts({
+					title: {
+							text: 'Bitcoin Historical Price vs Price Forecast',
+							x: -20 //center
+					},
+					subtitle: {
+							text: 'Alpha ver.',
+							x: -20
+					},
+					xAxis: {
+							categories: _dates
+							// ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+									// 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+					},
+					yAxis: {
+							title: {
+									text: 'Bitcoin close price'
+							},
+							plotLines: [{
+									value: 0,
+									width: 1,
+									color: '#808080'
+							}]
+					},
+					tooltip: {
+						headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		'<td style="padding:0"><b>{point.y:.1f} USD</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true
+					},
+					legend: {
+							layout: 'vertical',
+							align: 'right',
+							verticalAlign: 'middle',
+							borderWidth: 0,
+							 showInLegend: false
+					},
+					series: [{
+						name:'Actual price',
+						marker: {
+								fillColor: 'transparent',
+								lineColor: Highcharts.getOptions().colors[0]
+							 			},
+							data: _prices
+					},{
+						name:'Predicted price',
+						marker: {
+								fillColor: 'transparent'
+										},
+						data: _prediction
+					}]
+			});
+	});
+		</script>
+
+	</body>
+</html>
