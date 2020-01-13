@@ -194,7 +194,7 @@ tornado==6.0.3
 tqdm==4.39.0
 traitlets==4.3.3
 Twisted==18.7.0
-unicodecsv==0.14.1,
+unicodecsv==0.14.1
 wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.16.0
