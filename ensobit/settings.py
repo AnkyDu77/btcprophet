@@ -25,7 +25,7 @@ SECRET_KEY = 'bn-$m*+y=akc=kastg-#ukdfrejrofav8_+0lh99%!+4ts9(-$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['btcprophet.herokuapp.com','127.0.0.1']
 
 
 # Application definition
