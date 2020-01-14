@@ -3,7 +3,7 @@ import pandas as pd
 
 def index(request):
     #Reading data
-    raw_data = pd.read_csv('../home/btc/Data/frontend_data.csv')
+    raw_data = pd.read_csv('/app/btc/Data/frontend_data.csv')
     data = raw_data.copy()
     #Preparing front-end data
     dates = list(data['Date'])
