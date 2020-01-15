@@ -8,9 +8,17 @@ def index(request):
     #Preparing front-end data
     dates = list(data['Date'])
     close = list(data['Close'])
+    close[-1] = 'NaN'
+    close[-2] = 'NaN'
     prediction = list(data['Prediction'])
+    lower_line = list(data['Lower_line'])
+    upper_line = list(data['Upper_line'])
+    colored_area = []
+    for i,j in zip(lower_line,upper_line):
+        inner_lst=[i,j]
+        colored_area.append(inner_lst)
 
-    context = {'dates': dates, 'prices': close,
+    context = {'dates': dates, 'prices': close, 'colored_area': colored_area,
             'prediction':prediction}
 
     return render(request, 'btc/index.html',context=context)
