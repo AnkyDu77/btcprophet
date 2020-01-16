@@ -32,8 +32,9 @@
 		<script type="text/javascript">
 		_dates = {{dates|safe}}
 		_prices = {{prices|safe}}
-		_prediction = {{prediction|safe}}
 		_colored_area = {{colored_area|safe}}
+		_lower_line = {{lower_line|safe}}
+		_upper_line = {{upper_line|safe}}
 
 		$(function () {
 			$('#chrt').highcharts({
@@ -76,6 +77,13 @@
 							 showInLegend: false
 					},
 					series: [{
+						name:'Upper price',
+						marker: {
+								fillColor: 'transparent'
+										},
+						data:_upper_line,
+						color:'#3883a1'
+					},{
 						name:'Actual price',
 						marker: {
 								fillColor: 'transparent',
@@ -84,14 +92,20 @@
 							data: _prices
 					},{
 						type:"arearange",
-						data: _colored_area,
-						showInLegend: false
-					},{
-						name:'Predicted price',
 						marker: {
 								fillColor: 'transparent'
 										},
-						data: _prediction
+						data: _colored_area,
+						color: '#b3e0f2',
+						showInLegend:false,
+						enableMouseTracking: false
+					},{
+						name:'Lower price',
+						marker: {
+								fillColor: 'transparent'
+										},
+						data:_lower_line,
+						color:'#3883a1'
 					}]
 			});
 	});
