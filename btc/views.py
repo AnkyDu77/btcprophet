@@ -3,8 +3,8 @@ import pandas as pd
 import math
 
 def index(request):
-    #Reading data /app/btc/Data/frontend_data.csv
-    raw_data = pd.read_csv('/Users/aaraybin/Documents/py4e/mygit/btcprophet/btc/Data/frontend_data.csv')
+    #Reading data
+    raw_data = pd.read_csv('/app/btc/Data/frontend_data.csv')
     data = raw_data.copy()
     #Preparing front-end data
     dates = list(data['Date'])
