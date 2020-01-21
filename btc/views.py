@@ -1,15 +1,17 @@
 from django.shortcuts import render
 import pandas as pd
+import math
 
 def index(request):
-    #Reading data
-    raw_data = pd.read_csv('/app/btc/Data/frontend_data.csv')
+    #Reading data /app/btc/Data/frontend_data.csv
+    raw_data = pd.read_csv('/Users/aaraybin/Documents/py4e/mygit/btcprophet/btc/Data/frontend_data.csv')
     data = raw_data.copy()
     #Preparing front-end data
     dates = list(data['Date'])
     close = list(data['Close'])
-    close[-1] = 'NaN'
-    close[-2] = 'NaN'
+    for item in close: #Changing float-type nan on string-type nan
+        if math.isnan(item):
+            close[close.index(item)]='NaN'
     lower_line = list(data['Lower_line'])
     upper_line = list(data['Upper_line'])
     colored_area = []
