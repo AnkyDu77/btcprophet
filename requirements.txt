@@ -9,3 +9,4 @@ numpy==1.17.3
 pandas==0.25.3
 psycopg2==2.8.2
 whitenoise==5.0.1
+pyTelegramBotAPI==0.3.0
